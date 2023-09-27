@@ -1,0 +1,14 @@
+.lyrics-container{
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.current-lyric{
+    text-align: justify;
+    width: 80%;
+    font-weight: 600;
+}

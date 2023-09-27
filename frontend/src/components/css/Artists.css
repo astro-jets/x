@@ -1,0 +1,60 @@
+/* ArtistsPage.css */
+.artists-page {
+    padding: 5px;
+    /* Add padding for spacing */
+
+    .section-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .artist-card {
+        background-color: #0c0c0cef;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(255, 0, 0, 0.1);
+        padding: 5px;
+        text-align: center;
+        width: 10rem;
+        margin: 0 55px;
+
+        .artist-image {
+            object-fit: cover;
+            width: 7rem;
+            height: 7rem;
+            /* Make sure the image fills the card */
+            border-radius: 50%;
+            /* Round the image */
+        }
+
+        .artist-info {
+            margin-top: 10px;
+
+            .artist-name {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .artist-genre {
+                font-size: 14px;
+                color: #777;
+            }
+        }
+    }
+
+    /* Owl Carousel styles */
+    .owl-nav {
+        text-align: center;
+        margin-top: 20px;
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 20px;
+        }
+    }
+}

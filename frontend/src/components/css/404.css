@@ -1,0 +1,26 @@
+/* Custom CSS for the 404 page */
+.astronaut {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Apply your red, black, and white color scheme */
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #ff0000;
+    /* Red */
+    border-color: #ff0000;
+    /* Red */
+}
+
+.btn-primary:hover {
+    background-color: #ff4444;
+    /* Lighter Red on hover */
+    border-color: #ff4444;
+    /* Lighter Red on hover */
+}

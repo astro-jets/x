@@ -1,0 +1,11 @@
+.modal-content{
+    width: 90% !important;
+}
+.modal-dialog{
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.modal-body #home{
+    background: linear-gradient(10deg, #000000c2, #000000ee);
+}

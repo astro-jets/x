@@ -1,0 +1,7 @@
+.modal-error {
+    background: rgb(122, 0, 0) !important;
+}
+
+.modal-info {
+    background: linear-gradient(10deg, #000000dc, #000000cc);
+}

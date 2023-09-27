@@ -1,0 +1,27 @@
+.owl-stage {
+    display: flex;
+}
+
+.box {
+    margin: 0 2rem;
+}
+
+/* CSS to hide the player by default */
+.hidden {
+    display: none;
+}
+
+/* CSS animation to spin the musicArt image */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.music-art-spin {
+    animation: spin 3s linear infinite;
+}
