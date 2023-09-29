@@ -7,7 +7,8 @@
   "install:frontend": "cd frontend && npm install",
   "start:frontend": "cd frontend && npm start",
   "install:all": "npm run install:backend && npm run install:frontend",
-  "start:all": "pm2 start npm --name 'backend' -- start:backend && pm2 start npm --name 'frontend' -- start:frontend"
+  "start:all": "./node_modules/pm2/bin/pm2 start npm --name 'backend' -- start:backend && ./node_modules/pm2/bin/pm2 start npm --name 'frontend' -- start:frontend"
+
   },
   "repository": {
     "type": "git",
