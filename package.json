@@ -2,12 +2,12 @@
   "name": "studiox",
   "version": "1.2.0",
   "scripts": {
-    "install:backend": "cd backend && npm install",
-    "start:backend": "cd backend && npm start",
-    "install:frontend": "cd frontend && npm install",
-    "start:frontend": "cd frontend && npm start",
-    "install:all": "npm run install:backend && npm run install:frontend",
-    "start:all": " npm run start:frontend && npm run start:backend"
+  "install:backend": "cd backend && npm install",
+  "start:backend": "cd backend && npm start",
+  "install:frontend": "cd frontend && npm install",
+  "start:frontend": "cd frontend && npm start",
+  "install:all": "npm run install:backend && npm run install:frontend",
+  "start:all": "pm2 start npm --name 'backend' -- start:backend && pm2 start npm --name 'frontend' -- start:frontend"
   },
   "repository": {
     "type": "git",
