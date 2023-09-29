@@ -13,7 +13,7 @@ import './css/Events.css';
 
 
 const Events = () => {
-  const {data: events,isLoading,error} = useFetch('http://localhost:4000/events'); 
+  const {data: events,isLoading,error} = useFetch('https://studiox.onrender.com/api/events'); 
   return (
     <div className="container-fluid mt-2">
     <h3 className="text-center text-primary mb-3">Events</h3>

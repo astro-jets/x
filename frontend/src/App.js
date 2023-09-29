@@ -32,7 +32,7 @@ function App() {
 
           <Route path="/events/:id"><Event/></Route>
           
-          <Route path="/artist"><Artist /></Route>
+          <Route path="/artists"><Artist /></Route>
 
           <Route path="/scan"><QRCodeScanner /></Route>
 

@@ -14,7 +14,7 @@ function QRCodeScanner() {
       const qrDataString = JSON.stringify(data);
       setQRCodeData(JSON.stringify(data))
       
-      fetch('http://localhost:4000/validateTicket/', { 
+      fetch('https://studiox.onrender.com/api/validateTicket/', { 
             method:'POST',
             headers: {"Content-Type":"application/json"},
             body:JSON.stringify({qrCodeData:qrDataString}),

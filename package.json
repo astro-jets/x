@@ -1,0 +1,20 @@
+{
+  "name": "studiox",
+  "version": "1.2.0",
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "start:backend": "cd backend && npm start",
+    "install:frontend": "cd frontend && npm install",
+    "start:frontend": "cd frontend && npm start",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "start:all": "npm run start:backend && npm run start:frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/astro-jets/x.git"
+  },
+  "author": {
+    "name": "Mphatso Mtogolo",
+    "email": "mphatsomtogolo30@gmail.com"
+  }
+}

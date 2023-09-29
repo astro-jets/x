@@ -8,16 +8,6 @@ const Artist = require("../models/Artist")
 const Event = require("../models/Event")
 const Ticket = require("../models/Ticket")
 
-// Studio XLanding Page
-module.exports.index = async (req,res)=>{res.render('index')};
-
-// Studio X Playlists/Charts Page
-module.exports.charts = async (req,res)=>{
-    const playlist = await Playlist.find();
-    const charts = playlist.map(p => p.title);
-    res.render('playlists',{charts})
-}
-
 // Studio X GET Playlists with playlist ID and the current selected track
 module.exports.playlist = async (req,res)=>{
     try{
@@ -29,12 +19,6 @@ module.exports.playlist = async (req,res)=>{
         res.status(500).send(err.message)
     }
 }
-
-// Studio X Blogs Page
-module.exports.blogs = async (req,res)=>{res.render('blogs')}
-
-// Studuio X single Blog
-module.exports.blogSingle = async (req,res)=>{res.render('blogsingle')}
 
 // Studuio X Events Page
 module.exports.events = async (req,res)=>{
@@ -83,12 +67,6 @@ module.exports.eventSingle = async (req,res)=>{
     }
 }
 
-// Studuio X Artist Profile
-module.exports.artistProfile = async (req,res)=>{res.render('profile')}
-
-// Studuio X Album
-module.exports.album = async (req,res)=>{res.render('album')}
-
 // Studuio X One Song
 module.exports.findSongbyId = async (req,res)=>{
     const id = req.params.id;
@@ -109,22 +87,24 @@ module.exports.findSongbyId = async (req,res)=>{
         res.status(500).send(e.message);
     }
 }
-module.exports.song = async (req,res)=>{
-    res.render('song');
-}
-module.exports.singleSong = async (req,res)=>{
-    const song = await Song.findById(req.params.id);
-    res.render('singleSong',{song});
-}
-module.exports.getplaylist = async (req,res)=>{
+module.exports.getplaylistByID = async (req,res)=>{
     try{
-        const index = req.params.index;
-        const playlist = await renderPlaylist(req.params.playlist);
+        const { pid, index } = req.params;
+        const p = await Playlist.findById(pid);
+        const playlist = await renderPlaylist(p);
         data = {
             index,
             playlist
         }
         res.status(200).send(data);
+    }catch(e){res.status(500).send(e);}
+}
+module.exports.getplaylistByTitle = async (req,res)=>{
+    try{
+        const { title }= req.params
+        const p = await Playlist.findOne({title:title});
+        const playlist = await renderPlaylist(p);
+        res.status(200).send(playlist);
     }catch(e){res.status(500).send(e);}
 }
 
@@ -171,29 +151,6 @@ module.exports.searchSong = async (req, res) => {
     res.status(200).json(combinedResults);
 }
   } 
-  
-// try{
-//     const query  = req.body.search;
-//     console.log(query)
-//     // Split the user's query into individual terms
-//     const searchTerms = query.split(' ').filter(term => term.trim() !== '');
-
-//     // Create an array to hold the MongoDB query conditions
-//     const queryConditions = [];
-
-//     // Construct conditions for each search term
-//     for (const term of searchTerms) {
-//       queryConditions.push({ artistname: new RegExp(term, 'i') }); // Case-insensitive artist name search
-//       queryConditions.push({ title: new RegExp(term, 'i') }); // Case-insensitive song title search
-//     }
-
-//     // Construct the final MongoDB query using the $or operator
-//     const searchQuery = { $or: queryConditions };
-
-//     // Execute the query and retrieve matching songs
-//     const searchResults = await Song.find(searchQuery);
-//     res.send(searchResults)
-//   }
   catch (error) {
     console.error('Error searching:', error);
     res.status(500).json({ error: `An error occurred while searching. ${error.message}` });
@@ -275,22 +232,21 @@ module.exports.validateQRCode = async (req, res) => {
     }
 };
 
-
-// Render playlist
-async function renderPlaylist(id)
+// Render Playlist
+async function renderPlaylist(playlist)
 {
-    const playlist = await Playlist.findById(id);
-    const tracks = []
+    const tracks = [];
     for(let i = 0; i < playlist.tracks.length; i++){
         const song = playlist.tracks[i];
         const s = await Song.findById(song.id);
         tracks.push({
+            "playlist":playlist.id,
             "id":s.id,
             "position":song.position,
             "artist":song.artist,
             "title":s.title,
             "art":s.artPath,
-            "location":s.location
+            "audio":s.location
         });
     }
     return(tracks);
@@ -313,8 +269,8 @@ function encryptToken(token) {
   };
 }
 
-// Decrypt Function
-function decryptTokenData(encryptedTokenData, iv) {
+function decryptTokenData(encryptedTokenData, iv) 
+{
     const algorithm = 'aes-256-cbc';
     const encryptionKey = process.env.KEY;
     const ivBuffer = Buffer.from(iv, 'hex');

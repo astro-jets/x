@@ -12,7 +12,7 @@ const Event = () => {
     const [qr,setQr] = useState({});
     const [show, setShow] = useState(true);
     const [ticket, setTicket] = useState("");
-    const {data: event,isLoading,error} = useFetch(`http://localhost:4000/events/${id}`); 
+    const {data: event,isLoading,error} = useFetch(`https:/studiox.onrender.com/api/events/${id}`); 
 
     const combineImages = (qrCodeImage, flyerImage, eventInfo) => {
         let combinedImageURL = "";
@@ -86,7 +86,7 @@ const Event = () => {
     };    
     
     const purchaseTicket = async ()=>{
-        fetch(`http://localhost:4000/ticket/${id}`)
+        fetch(`https://studiox.onrender.com/api/ticket/${id}`)
         .then(res=>{if (!res.ok) {
             throw Error('Failed to fetch data');}
             return(res.json());

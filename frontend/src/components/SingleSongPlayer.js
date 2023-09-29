@@ -175,7 +175,7 @@ const SingleSongPlayer = ({ music }) => {
         <Carousel.Item>
           <h1 className="text-center mt-3"> Lyrics</h1>
           <LyricsDisplay
-            song={`/uploads/songs/${currentSong?.location}`}
+            song={`/uploads/songs/${currentSong?.audio}`}
             audioElement={audioElement}
             lyrics={lyrics}
           />
@@ -215,7 +215,7 @@ const SingleSongPlayer = ({ music }) => {
           <span>7K</span>
         </a>
         <a
-          href={`/uploads/songs/${currentSong?.location}`}
+          href={`/uploads/songs/${currentSong?.audio}`}
           download
           className="btn btn-secondary rounded-pill p-2 text-primary flex sb"
         >
@@ -231,7 +231,7 @@ const SingleSongPlayer = ({ music }) => {
         </a>
       </div>
 
-      <audio id="mainAudio" ref={audioElement} src={`/uploads/songs/${currentSong?.location}`} preload='auto'></audio>
+      <audio id="mainAudio" ref={audioElement} src={`/uploads/songs/${currentSong?.audio}`} preload='auto'></audio>
     </div>
   );
 };

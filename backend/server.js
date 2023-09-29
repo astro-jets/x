@@ -11,7 +11,7 @@ app.use(methodOverride('_method'));
 // Remove bodyParser and use express.json() instead
 app.use(express.json({ limit: '10mb' })); // Use express.json() to parse JSON data
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: process.env.ORIGIN }));
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
@@ -26,14 +26,12 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 // Route Files
 const route = require('./routes/routes');
-const adminRouter = require('./routes/admin');
 
 // Routes
-app.use('/', route);
-app.use('/admin', adminRouter);
+app.use('/api', route);
 
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
+  console.log(`API on port ${PORT}`);
 });

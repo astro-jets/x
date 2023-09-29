@@ -21,7 +21,7 @@ import {
 const Home = () => {
     const [signUpPopUp,setSignupPopUp] = useState(true)
 
-    const {data: musicData,isLoading,error} = useFetch('http://localhost:4000/admin/getPlaylist/Rap'); 
+    const {data: musicData,isLoading,error} = useFetch('https://studiox.onrender.com/api/getPlaylist/Rap'); 
     console.log(musicData)
     
     return ( 

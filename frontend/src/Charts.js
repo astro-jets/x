@@ -5,7 +5,7 @@ import Loader from './components/Loader'
 import { useEffect, useRef } from 'react';
 
 const Charts = () => {
-  const {data: musicData,isLoading,error} = useFetch('http://localhost:4000/admin/getPlaylist/Rap');
+  const {data: musicData,isLoading,error} = useFetch('https://studiox.onrender.com/api/getPlaylist/Rap');
   const audioElement = useRef(null)
   useEffect(()=>{
     audioElement.current =  document.createElement('audio');

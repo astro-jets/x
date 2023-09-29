@@ -7,7 +7,7 @@ import ErrorComponent from './components/Error';
 const Results = () => {
     const {search} = useParams();
   
-    const {data:results,isLoading,error} = useFetchPost("http://localhost:4000/search/",search);
+    const {data:results,isLoading,error} = useFetchPost("http://localhost:4000/api/search/",search);
     return ( 
       <section className="col-12">
         <div className="album-details flex ac sa py-4">
