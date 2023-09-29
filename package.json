@@ -6,8 +6,8 @@
     "start:backend": "cd backend && npm start",
     "install:frontend": "cd frontend && npm install",
     "start:frontend": "cd frontend && npm build",
-    "install:all": "npm run install:backend && npm run install:frontend",
-    "start:all": "npm run start:frontend && npm run start:backend"
+    "install:all": "npm run install:backend && npm run install:frontend && npm run start:frontend ",
+    "start:all": "npm run start:backend"
   },
   "repository": {
     "type": "git",
